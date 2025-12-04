@@ -22,15 +22,15 @@ jobs:
         run: npm ci
 
       - name: Run unit tests with coverage
-        run: npm test --coverage --coverageReporters=text --coverageReporters=Icov
+        run: npm test --coverage --coverageReporters=text --coverageReporters=lcov
       - name: Upload coverage report 
         uses: codecov/codecov-action@v4
         with:
-          file: ./coverage/Icov.info
+          file: ./coverage/lcov.info
           fail_ci_if_error: true
       - name: Archivo test results
         if: always()
-        uses: action/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: test-results
           path:
